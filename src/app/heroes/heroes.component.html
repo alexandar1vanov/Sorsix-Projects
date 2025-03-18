@@ -1,0 +1,19 @@
+<h2>Heroes</h2>
+
+<ul class="heroes">
+  @for (hero of heroes; track hero.id) {
+  @if (selected && selected.id===hero.id) {
+  <button type="button" (click)="onHero(hero)" style="background-color: red;">
+    <span class="badge">{{hero.id}}</span>
+    <span class="name">{{hero.name}}</span>
+    <!-- <span class="power">{{hero.power}}</span> -->
+  </button>
+  }@else {
+  <button type="button" (click)="onHero(hero)">
+    <span class="badge">{{hero.id}}</span>
+    <span class="name">{{hero.name}}</span>
+  </button>
+  }
+  <!-- <span class="power">{{hero.power}}</span> -->
+  }
+</ul>

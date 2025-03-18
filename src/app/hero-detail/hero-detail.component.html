@@ -1,0 +1,13 @@
+@if (hero) {
+<h3>{{ hero.name }} Details</h3>
+<p>
+  ID: <span>{{ hero.id }}</span>
+</p>
+<p>
+  Name: <span>{{ hero.name }}</span>
+</p>
+<p>
+  Power: <span>{{ hero.power }}</span>
+</p>
+<button type="button" (click)="addCompare(hero)">Add to Compare</button>
+}

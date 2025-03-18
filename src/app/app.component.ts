@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { HeroesComponent } from "./heroes/heroes.component";
+import { Hero } from "./hero";
+import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
+import { FavHeroesComponent } from "./fav-heroes/fav-heroes.component";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [HeroesComponent, HeroDetailComponent, FavHeroesComponent]
 })
 export class AppComponent {
-  title = 'tour-of-heroes-25a';
+    selectedHero: Hero | undefined;
+    selected: Hero | undefined;
+    onSelected(hero:Hero){
+        this.selectedHero=hero;
+    }
+
 }
