@@ -1,20 +1,12 @@
 import { Component } from "@angular/core";
-import { HeroesComponent } from "./heroes/heroes.component";
-import { Hero } from "./hero";
-import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
-import { FavHeroesComponent } from "./fav-heroes/fav-heroes.component";
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [HeroesComponent, HeroDetailComponent, FavHeroesComponent]
+    imports: [RouterLink, RouterLinkActive, RouterOutlet]
 })
 export class AppComponent {
-    selectedHero: Hero | undefined;
-    selected: Hero | undefined;
-    onSelected(hero:Hero){
-        this.selectedHero=hero;
-    }
 
 }

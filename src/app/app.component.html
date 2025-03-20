@@ -1,4 +1,7 @@
 <h2>App Heroes</h2>
-<app-heroes (selectedHero)="onSelected($event)" [selected]="selectedHero" ></app-heroes>
-<hero-detail [hero]="selectedHero"></hero-detail>
-<fav-heroes (selectedHero)="onSelected($event)"></fav-heroes>
+<nav>
+  <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+</nav>
+
+<router-outlet></router-outlet>

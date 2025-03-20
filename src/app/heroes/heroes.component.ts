@@ -1,20 +1,29 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import {Component, inject,OnInit} from "@angular/core";
 import { Hero } from "../hero"
 import { HEROES } from "../mock-heroes";
+import {HeroesService} from '../heroes.service';
+import {RouterLink} from '@angular/router';
+import {AsyncPipe} from '@angular/common';
+import {async, Observable, of} from 'rxjs';
 @Component({
     templateUrl: './heroes.component.html',
     selector: 'app-heroes',
     styleUrl: './heroes.component.css',
-    // imports: [JsonPipe, UpperCasePipe, NgFor]
+    imports: [
+        RouterLink,AsyncPipe
+    ],
 })
-export class HeroesComponent {
-    heroes: Hero[] = HEROES;
-    @Output() selectedHero = new EventEmitter<Hero>();
-    @Input() selected: Hero | undefined;
+export class HeroesComponent implements OnInit {
 
-    onHero(hero: Hero) {
-        console.log('hero clicked', hero);
-        this.selectedHero.emit(hero);
+    service= inject(HeroesService);
+    heroes$: Observable<Hero[]>=this.service.getHeroesAsync();
+
+    constructor() {
+        console.log('service',this.service);
     }
-    
+
+    ngOnInit():void{
+        // this.heroes=this.service.getHeroes();
+    }
+
 }
