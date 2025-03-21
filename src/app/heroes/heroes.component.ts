@@ -9,9 +9,7 @@ import {async, Observable, of} from 'rxjs';
     templateUrl: './heroes.component.html',
     selector: 'app-heroes',
     styleUrl: './heroes.component.css',
-    imports: [
-        RouterLink,AsyncPipe
-    ],
+    imports: [RouterLink,AsyncPipe],
 })
 export class HeroesComponent implements OnInit {
 
