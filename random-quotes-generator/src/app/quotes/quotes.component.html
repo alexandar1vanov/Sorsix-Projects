@@ -1,0 +1,18 @@
+<div id="quote-box">
+  @if (randomQuote | async; as quote) {
+    <div id="quote-text">
+      <p id="text" [style.color]="backgroundColor">"{{ quote.quote }}"</p>
+    </div>
+    <div id="quote-author">
+      <span id="author" [style.color]="backgroundColor">- {{ quote.author }}</span>
+    </div>
+    <a id="twitter"
+    [style.backgroundColor]="backgroundColor"
+       href="https://twitter.com/intent/tweet?text=
+{{ encodeURIComponent(quote.quote + ' - ' + quote.author) }}"
+       target="_blank">
+      <i class="fa fa-twitter">X</i>
+    </a>
+    <a id="newQuote" [style.backgroundColor]="backgroundColor" (click)="getNewQuote()">New Quote</a>
+  }
+</div>

@@ -1,0 +1,16 @@
+{
+  "name": "typescript_vezbi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vezbi.js",
+  "scripts": {
+    "dev": "start tsc --watch & lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^5.8.2"
+  }
+}
+

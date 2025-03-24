@@ -1,0 +1,79 @@
+:host {
+  margin: 0;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--quote-color, lightcoral);
+}
+
+#quote-box {
+  width: 100%;
+  max-width: 533px;
+  min-height: 333px;
+  background-color: white;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#text {
+  font-family: Calibri, sans-serif;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#author {
+  font-family: Calibri, sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#quote-text {
+  flex-grow: 1;
+}
+
+#quote-author {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+#newQuote {
+  display: flex;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 4px;
+  align-self: flex-end;
+  margin-right: 20px;
+}
+
+#twitter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 576px) {
+#quote-box {
+    width:80%;
+}
+}
