@@ -1,0 +1,44 @@
+input {
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  width: 94%;
+}
+#searchBar {
+  display: flex;
+  justify-content: center;
+}
+#searchBar div{
+  width: 100%;
+}
+.movies a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 80%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid lightcoral;
+}
+li{
+  list-style-type: none;
+}
+.movies div{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+.movies img {
+  width: 15%;
+  height: auto;
+}

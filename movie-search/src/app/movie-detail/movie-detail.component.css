@@ -1,0 +1,86 @@
+#main-movie-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 20px auto;
+}
+
+#movie-details {
+  width: 60%;
+}
+
+#details {
+  display: flex;
+  background-color: #e7a955;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#details img {
+  width: 30%;
+  border-radius: 10px;
+}
+
+#text-details {
+  padding-left: 20px;
+}
+
+#text-details p {
+  margin-bottom: 10px;
+}
+
+#actors {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#actors li {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#episodes-section {
+  width: 35%;
+  background-color: black;
+  color: #e7a955;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.season h4 {
+  margin-top: 20px;
+}
+
+.episodes {
+  list-style-type: none;
+}
+
+.episodes li {
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  #main-movie-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  #details img {
+    width: auto;
+    margin-bottom: 15px;
+  }
+
+  #text-details {
+    padding-left: 0;
+    font-size: smaller;
+    text-align: center;
+  }
+
+  #episodes-section {
+    width: auto;
+    margin-top: 20px;
+    text-align: center;
+  }
+}

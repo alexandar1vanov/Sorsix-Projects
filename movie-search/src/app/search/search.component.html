@@ -1,0 +1,24 @@
+<div id="searchBar">
+  <div>
+    <div>
+      <input
+        type="text"
+        placeholder="Search a movie..."
+        #search (input)="onChange(search.value)"
+      >
+      <ul>
+        @for (movie of movies$ | async; track movie) {
+          <li class="movies">
+            <a [routerLink]="['/movie-detail', movie.imdbID]">
+              <img [src]="movie.Poster" alt="{{ movie.Title }}" />
+              <div>
+                <h3>{{ movie.Title }}</h3>
+                <p>{{ movie.Plot }}</p>
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
