@@ -31,14 +31,29 @@
 
 #actors {
   list-style-type: none;
-  padding-left: 0;
+  background-color: black;
+  color: #e7a955;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 #actors li {
   font-size: larger;
   font-weight: bold;
+  margin: 20px;
 }
-
+#actors h2{
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+h1{
+  padding: 20px;
+  background-color: black;
+  color: #e7a955;
+  border-radius: 15px;
+  display: table;
+  margin-left: 10px;
+}
 #episodes-section {
   width: 35%;
   background-color: black;

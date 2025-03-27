@@ -1,5 +1,7 @@
 @if (movie$ | async; as movie) {
-  <h2>{{ movie.Title }}</h2>
+  <div id="title">
+    <h1>{{ movie.Title }}</h1>
+  </div>
   <div id="main-movie-details">
     <div id="movie-details">
       <div id="details">
@@ -13,8 +15,8 @@
       </div>
 
       @if (movie.Actors) {
-        <h3>Cast</h3>
         <ul id="actors">
+          <h2>Cast</h2>
           @for (actor of movie.Actors.split(', ');track actor) {
             <li>{{ actor }}</li>
           }
@@ -24,7 +26,7 @@
 
     @if ((movie.Type === 'series') && (seasons$ | async); as seasons) {
       <div id="episodes-section">
-        <h3>Episodes</h3>
+        <h2>Episodes</h2>
         @for (season of seasons;track season) {
           <div class="season">
             <h4>Season {{ season.Season }}</h4>
