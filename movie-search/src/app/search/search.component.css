@@ -3,8 +3,25 @@ input {
   padding: 1rem;
   margin-top: 2rem;
   margin-left: 2rem;
-  width: 80%;
+  width: 75%;
+  border: 2px solid #e7a955
 }
+button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border: 2px solid #e7a955;
+  background-color: #e7a955;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #cf8c3d;
+}
+
 #searchBar {
   display: flex;
   justify-content: center;
@@ -23,10 +40,13 @@ input {
   flex-direction: row;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid lightcoral;
+  box-shadow: 2px 2px 6px gray;
+  border: 2px solid #e7a955;
 }
 li{
   list-style-type: none;
+  margin: 1rem;
+
 }
 .movies div{
   width: 70%;

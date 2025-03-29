@@ -3,9 +3,10 @@
     <div>
       <input
         type="text"
-        placeholder="Search a movie..."
+        placeholder="Find a movie by title..."
         #search (input)="onChange(search.value)"
       >
+      <button>Search</button>
       <ul>
         @for (movie of movies$ | async; track movie) {
           <li class="movies">
@@ -14,6 +15,7 @@
               <div>
                 <h3>{{ movie.Title }}</h3>
                 <p>{{ movie.Plot }}</p>
+                <p><i>{{ movie.Genre }}</i></p>
               </div>
             </a>
           </li>

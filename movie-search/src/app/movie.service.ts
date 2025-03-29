@@ -1,7 +1,7 @@
 // movie.service.ts
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
-import {Observable, map, forkJoin, switchMap, of, catchError, throwError, tap} from 'rxjs';
+import {Observable, map, forkJoin, switchMap, of, catchError, throwError, tap, mergeMap} from 'rxjs';
 import {Movie} from './movie';
 import {Season} from './season';
 
@@ -24,7 +24,7 @@ export class MovieService {
   search(query: string): Observable<Movie[]> {
     const url = `${this.baseUrl}?s=${query}&apikey=${this.apiKey}`;
     return this.http.get<ApiResponse>(url).pipe(
-      switchMap(response => {
+      mergeMap(response => {
         if (response.Search) {
           return forkJoin(
             response.Search.map(movie =>
@@ -37,25 +37,10 @@ export class MovieService {
     );
   }
 
-
-  // getSeasons(imdbID: string, totalSeasons: number): Observable<Season[]> {
-  //   const seasonRequests = Array.from({length: totalSeasons}, (_, index) => {
-  //     const season = index + 1;
-  //     const url = `${this.baseUrl}?i=${imdbID}&Season=${season}&apikey=${this.apiKey}`;
-  //     console.log('povik');
-  //     return this.http.get<{ Episodes: Season[] }>(url).pipe(
-  //       map(response => response.Episodes?.map(episode => ({...episode, season})) || [])
-  //     );
-  //   });
-  //   return forkJoin(seasonRequests).pipe(
-  //     map(allSeasons => allSeasons.flat())
-  //   );
-  // }
-
   getShowByImdbId(imdbId: string | undefined): Observable<Movie> {
     return this.http.get<Movie>(`${this.baseUrl}?apiKey=${this.apiKey}&i=${imdbId}&plot=full`).pipe(
       tap(movie => console.log('Movie Data:', movie)),
-      switchMap((show: Movie) =>
+      mergeMap((show: Movie) =>
         show.Type === 'series' && show.totalSeasons
           ? this.getSeasonsByImdbId(show.imdbID!, +show.totalSeasons).pipe(
             map((seasons: Season[]) => ({...show, Seasons: seasons}))

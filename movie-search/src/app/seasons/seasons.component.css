@@ -1,0 +1,27 @@
+
+#episodes-section {
+  background-color: black;
+  color: #e7a955;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.season h4 {
+  margin-top: 20px;
+}
+
+.episodes {
+  list-style-type: none;
+}
+
+.episodes li {
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  #episodes-section {
+    width: auto;
+    margin-top: 20px;
+    text-align: center;
+  }
+}

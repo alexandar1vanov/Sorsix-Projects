@@ -1,4 +1,4 @@
-import {Episode} from './Episode';
+import {Episode} from './episode';
 
 export interface Season{
   "Title": string,

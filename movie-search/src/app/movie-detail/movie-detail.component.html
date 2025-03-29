@@ -23,21 +23,8 @@
         </ul>
       }
     </div>
-
-    @if ((movie.Type === 'series') && (seasons$ | async); as seasons) {
-      <div id="episodes-section">
-        <h2>Episodes</h2>
-        @for (season of seasons;track season) {
-          <div class="season">
-            <h4>Season {{ season.Season }}</h4>
-            <ul class="episodes">
-              @for (episode of season.Episodes;track episode) {
-                <li>S{{ season.Season }}E{{ episode.Episode }} - {{ episode.Title }}</li>
-              }
-            </ul>
-          </div>
-        }
-      </div>
+    @if (movie.Type==='series') {
+      <app-seasons></app-seasons>
     }
   </div>
 }
