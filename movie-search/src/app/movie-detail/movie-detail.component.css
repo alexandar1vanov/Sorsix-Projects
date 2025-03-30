@@ -55,6 +55,14 @@
   margin: 20px auto;
 }
 
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #e7a955;
+}
+
 h1 {
   padding: 20px;
   background-color: black;

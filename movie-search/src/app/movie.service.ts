@@ -1,10 +1,9 @@
 // movie.service.ts
-import {HttpClient} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
-import {Observable, map, forkJoin, switchMap, of, catchError, throwError, tap, mergeMap} from 'rxjs';
-import {Movie} from './movie';
-import {Season} from './season';
-
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable, map, forkJoin, switchMap, of, catchError, throwError, tap, mergeMap } from 'rxjs';
+import { Movie } from '../interfaces/movie';
+import { Season } from '../interfaces/season';
 interface ApiResponse {
   Search: Movie[];
   totalResults: string;
@@ -24,29 +23,20 @@ export class MovieService {
   search(query: string): Observable<Movie[]> {
     const url = `${this.baseUrl}?s=${query}&apikey=${this.apiKey}`;
     return this.http.get<ApiResponse>(url).pipe(
-      mergeMap(response => {
-        if (response.Search) {
-          return forkJoin(
-            response.Search.map(movie =>
-              this.http.get<Movie>(`${this.baseUrl}?i=${movie.imdbID}&apikey=${this.apiKey}&plot=full`)
-            )
-          );
-        }
-        return of([]);
-      })
+      switchMap(response => response.Search ? this.fetchMovieDetails(response.Search) : of([]))
     );
   }
 
-  getShowByImdbId(imdbId: string | undefined): Observable<Movie> {
-    return this.http.get<Movie>(`${this.baseUrl}?apiKey=${this.apiKey}&i=${imdbId}&plot=full`).pipe(
-      tap(movie => console.log('Movie Data:', movie)),
-      mergeMap((show: Movie) =>
-        show.Type === 'series' && show.totalSeasons
-          ? this.getSeasonsByImdbId(show.imdbID!, +show.totalSeasons).pipe(
-            map((seasons: Season[]) => ({...show, Seasons: seasons}))
-          ) : of(show)),
-      catchError(this.handleError<Movie>('getShowByImdbId'))
+  private fetchMovieDetails(movies: Movie[]): Observable<Movie[]> {
+    return forkJoin(
+      movies.map(movie =>
+        this.http.get<Movie>(`${this.baseUrl}?i=${movie.imdbID}&apikey=${this.apiKey}&plot=full`)
+      )
     );
+  }
+
+  getShowByImdbId(imdbId: string): Observable<Movie> {
+    return this.http.get<Movie>(`${this.baseUrl}?apiKey=${this.apiKey}&i=${imdbId}&plot=full`);
   }
 
   getSeasonsByImdbId(imdbId: string, totalSeasons: number): Observable<Season[]> {

@@ -1,10 +1,10 @@
+import { Season } from './../../interfaces/season';
+import { Movie } from '../../interfaces/movie';
 import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {map, mergeMap, Observable, switchMap, tap} from 'rxjs';
-import {Movie} from '../movie';
+import {debounce, debounceTime, delay, map, mergeMap, Observable, switchMap, tap} from 'rxjs';
 import {MovieService} from '../movie.service';
 import {AsyncPipe} from '@angular/common';
-import {Season} from '../season';
 import {SeasonsComponent} from '../seasons/seasons.component';
 
 @Component({
@@ -26,6 +26,7 @@ export class MovieDetailComponent implements OnInit {
     this.movie$ = this.route.paramMap.pipe(
       map(params => params.get('imdbID')),
       mergeMap(imdbID => imdbID ? this.service.getShowByImdbId(imdbID) : []),
+      delay(1000),
     );
   }
 }

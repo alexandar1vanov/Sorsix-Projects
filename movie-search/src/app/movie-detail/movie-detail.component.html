@@ -23,8 +23,12 @@
         </ul>
       }
     </div>
-    @if (movie.Type==='series') {
-      <app-seasons></app-seasons>
+    @if (movie.Type==='series' && movie.totalSeasons && movie.imdbID) {
+      <app-seasons [id]="movie.imdbID" [totalSeasons]="movie.totalSeasons"></app-seasons>
     }
+  </div>
+}@else {
+  <div id="loading">
+    <h1>Loading...</h1>
   </div>
 }

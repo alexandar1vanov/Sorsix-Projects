@@ -1,9 +1,8 @@
-// search.component.ts
 import {Component, inject, OnInit} from '@angular/core';
 import {Subject, debounceTime, distinctUntilChanged, switchMap, Observable, of, tap, forkJoin, mergeMap} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {MovieService} from '../movie.service';
-import {Movie} from '../movie';
+import { Movie } from './../../interfaces/movie';
 import {FormControl} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 
