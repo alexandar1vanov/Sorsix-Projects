@@ -11,9 +11,6 @@ export class QuoteServiceService {
   colors: string[] = ["#553333", "#336699", "#669933", "#993366", "#663399", "#996633"];
   @HostBinding('style.--quote-color') backgroundColor: string | undefined;
 
-  constructor() {
-    // this.quotes$=this.getQuotesAsync();
-  }
 
   getQuotesAsync(): Observable<Quote[]> {
     return this.http.get<{quotes: Quote[]}>('https://gist.githubusercontent.com/camperbot/' +
@@ -27,7 +24,6 @@ export class QuoteServiceService {
     return this.getQuotesAsync().pipe(
       map(quotes=>{
         const randomIndex=Math.floor(Math.random()*quotes.length);
-        console.log(quotes[randomIndex]);
         return quotes[randomIndex];
       })
     )

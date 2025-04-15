@@ -18,14 +18,13 @@ export class QuotesComponent implements OnInit {
   @HostBinding('style.--quote-color') backgroundColor: string | undefined;
 
   ngOnInit(): void {
-    // Initialize with a random color
     this.backgroundColor = this.service.getRandomColor();
   }
 
   getNewQuote(): void {
     this.randomQuote = this.service.getRandomQuote().pipe(
       tap(() => {
-        this.backgroundColor = this.service.getRandomColor(); // Update the CSS variable dynamically
+        this.backgroundColor = this.service.getRandomColor();
       })
     );
   }

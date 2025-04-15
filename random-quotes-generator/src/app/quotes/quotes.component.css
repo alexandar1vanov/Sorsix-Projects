@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--quote-color, lightcoral);
+  transition: background-color 0.5s ease-in-out;
 }
 
 #quote-box {
@@ -60,7 +61,6 @@
   display: flex;
   justify-content: space-between;
   margin-left: 20px;
-  /* margin-right: 50px; */
 }
 
 #twitter {
